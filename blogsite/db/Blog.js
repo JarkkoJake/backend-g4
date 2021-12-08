@@ -1,26 +1,38 @@
 const knex = require("Knex");
 
+// max amount of blogs shows on one request
+const blogLimit = 25;
+
+// what info is being requested for the browsing view
+const browseInfo = {
+    title: "title",
+    id: "id",
+    tags: "tags",
+    topic: "topic",
+    thumbnail: "thumbnail"
+};
+
 /*Creates a new blog to the database, takes a blog object
 {
-    Title: string,
-    Content: string,
-    Thumbnail: string?,
-    User: int, // user id
-    Tags: tag1,tag2,tag3...
+    title: string,
+    content: string,
+    thumbnail: string?,
+    user: int, // user id
+    tags: tag1,tag2,tag3... string
 }*/
 exports.createBlog = function (blog) {
     return knex("Blogs").insert(blog);
 };
 
-/* Get all blogs from the database, TODO: limit, orderby, selection*/
+/* Get all blogs from the database, TODO: orderby? */
 exports.getBlogs = function () {
-    return knex("Blogs").select("*");
+    return knex("Blogs").select(browseInfo).limit(blogLimit);
 };
 
 /* Get all topics with specific topic (string) 
-TODO: limit, orderby, selection */
+TODO: orderby? */
 exports.getBlogsByTopic = function (topic) {
-    return knex("Blogs").select("*").where({"topic": topic});
+    return knex("Blogs").select(browseInfo).where({"topic": topic}).limit(blogLimit);
 };
 
 /*Get all data from a blog with id (int)*/
