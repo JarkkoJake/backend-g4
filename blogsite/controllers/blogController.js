@@ -1,3 +1,5 @@
+const blogDb = require("../db/Blog");
+const Blog = require("../models/Blog");
 
 // get newest blogs with no filtering to be shown on homepage
 exports.getBlogs = function (req, res) {
@@ -27,6 +29,12 @@ exports.getBlogWithId = function (req, res) {
 };
 
 // post a new blog
-exports.newBlog = function (req, res) {
-    res.send("new blog");
+exports.newBlog = async function (req, res) {
+    try {
+        var newBlog = new Blog(req.body);
+        var results = await blogDb.createBlog(newBlog);
+        res.status(201).send(results);
+    } catch (err) {
+        res.status(400).send(err.message);
+    }
 };

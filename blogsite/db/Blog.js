@@ -1,4 +1,4 @@
-const knex = require("Knex");
+const knex = require("./Knex");
 
 // max amount of blogs shows on one request
 const blogLimit = 25;
@@ -19,6 +19,7 @@ const browseInfo = {
     thumbnail: string?,
     user: int, // user id
     tags: tag1,tag2,tag3... string
+    topic: string (Music, Nature, Technology, Transport or Other)
 }*/
 exports.createBlog = function (blog) {
     return knex("Blogs").insert(blog);
