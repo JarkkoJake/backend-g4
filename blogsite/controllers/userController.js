@@ -11,8 +11,13 @@ exports.getAllUsers = async function (req, res) {
     }
 };
 // searches for a user based on name TODO: priority low
-exports.getUsersWithName = function (req, res) {
-    res.send("searching for users with name: " + req.params.name);
+exports.getUsersWithName = async function (req, res) {
+    try {
+        var results = await userDb.getUsersByName(req.params.username);
+        res.status(200).send(results);
+    } catch (err) {
+        res.status(400).send(err.message);
+    }
 };
 // get specific user with id
 exports.getUserWithId = async function (req, res) {

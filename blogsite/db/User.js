@@ -18,10 +18,11 @@ exports.getUsers = function () {
     return knex("Users").select(User.publicUserInfo).limit(User.userLimit);
 };
 
-/*Get all users with name search
-TODO: like*/
+/*Get all users with name search*/
 exports.getUsersByName = function (name) {
-    return knex("Users").select(User.publicUserInfo).where({"Username": name}).limit(User.userLimit);
+    return knex("Users").select(User.publicUserInfo)
+    .where("username", "like", "%" + name + "%")
+    .limit(User.userLimit);
 };
 
 /* Get a user with id*/
