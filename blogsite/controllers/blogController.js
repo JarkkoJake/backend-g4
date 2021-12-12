@@ -30,8 +30,13 @@ exports.getOtherBlogs = function (req, res) {
 };
 
 // get specific blog for proper reading view
-exports.getBlogWithId = function (req, res) {
-    res.send("blog with id: " + req.params.id);
+exports.getBlogWithId = async function (req, res) {
+    try {
+        var results = await blogDb.getBlogById(req.params.id);
+        res.status(200).send(results);
+    } catch (err) {
+        res.status(400).send(err.message);
+    }
 };
 
 // post a new blog
