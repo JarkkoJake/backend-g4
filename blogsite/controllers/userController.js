@@ -2,10 +2,15 @@ const userDb = require("../db/User");
 const User = require("../models/User");
 
 // gets all users
-exports.getAllUsers = function (req, res) {
-    res.send("gets all users");
+exports.getAllUsers = async function (req, res) {
+    try {
+        var results = await userDb.getUsers();
+        res.status(200).send(results);
+    } catch (err){
+        res.status(400).send(err.message);
+    }
 };
-// searches for a user based on name
+// searches for a user based on name TODO: priority low
 exports.getUsersWithName = function (req, res) {
     res.send("searching for users with name: " + req.params.name);
 };
