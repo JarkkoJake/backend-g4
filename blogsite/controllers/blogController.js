@@ -5,6 +5,11 @@ const Blog = require("../models/Blog");
 exports.getBlogs = async function (req, res) {
     try {
         var results = await blogDb.getBlogs();
+
+        // split the tags into an array
+        for (let i = 0; i < results.length; i++) {
+            results[i].tags = results[i].tags.split(",");
+        }
         res.status(200).send(results);
     } catch (err) {
         res.status(400).send(err.message);
@@ -16,6 +21,11 @@ exports.getBlogs = async function (req, res) {
 exports.getMusicBlogs = async function (req, res) {
     try {
         var results = await blogDb.getBlogsByTopic("Music");
+
+        // split the tags into an array
+        for (let i = 0; i < results.length; i++) {
+            results[i].tags = results[i].tags.split(",");
+        }
         res.status(200).send(results);
     } catch (err) {
         res.status(400).send(err.message);
@@ -24,6 +34,11 @@ exports.getMusicBlogs = async function (req, res) {
 exports.getNatureBlogs = async function (req, res) {
     try {
         var results = await blogDb.getBlogsByTopic("Nature");
+
+        // split the tags into an array
+        for (let i = 0; i < results.length; i++) {
+            results[i].tags = results[i].tags.split(",");
+        }
         res.status(200).send(results);
     } catch (err) {
         res.status(400).send(err.message);
@@ -32,6 +47,11 @@ exports.getNatureBlogs = async function (req, res) {
 exports.getTechnologyBlogs = async function (req, res) {
     try {
         var results = await blogDb.getBlogsByTopic("Technology");
+
+        // split the tags into an array
+        for (let i = 0; i < results.length; i++) {
+            results[i].tags = results[i].tags.split(",");
+        }
         res.status(200).send(results);
     } catch (err) {
         res.status(400).send(err.message);
@@ -40,6 +60,11 @@ exports.getTechnologyBlogs = async function (req, res) {
 exports.getTransportBlogs = async function (req, res) {
     try {
         var results = await blogDb.getBlogsByTopic("Transport");
+
+        // split the tags into an array
+        for (let i = 0; i < results.length; i++) {
+            results[i].tags = results[i].tags.split(",");
+        }
         res.status(200).send(results);
     } catch (err) {
         res.status(400).send(err.message);
@@ -48,6 +73,11 @@ exports.getTransportBlogs = async function (req, res) {
 exports.getOtherBlogs = async function (req, res) {
     try {
         var results = await blogDb.getBlogsByTopic("Other");
+
+        // split the tags into an array
+        for (let i = 0; i < results.length; i++) {
+            results[i].tags = results[i].tags.split(",");
+        }
         res.status(200).send(results);
     } catch (err) {
         res.status(400).send(err.message);
