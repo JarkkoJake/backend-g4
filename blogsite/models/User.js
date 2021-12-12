@@ -16,6 +16,16 @@
          this.email = data.email
          this.profilePicture = data.profilePicture
      }
+
+     // amount of users sent on a single request
+     static userLimit = 25;
+
+     // information sent when browsing users
+     static publicUserInfo = {
+        username: "username",
+        id: "id",
+        profilePicture: "profilePicture"
+    };
  }
 
  module.exports = User;

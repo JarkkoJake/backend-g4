@@ -10,8 +10,13 @@ exports.getUsersWithName = function (req, res) {
     res.send("searching for users with name: " + req.params.name);
 };
 // get specific user with id
-exports.getUserWithId = function (req, res) {
-    res.send("get user with id: " + req.params.id);
+exports.getUserWithId = async function (req, res) {
+    try {
+        var results = await userDb.getUserById(req.params.id);
+        res.status(200).send(results);
+    } catch (err){
+        res.status(400).send(err.message);
+    }
 };
 
 // post a new user
