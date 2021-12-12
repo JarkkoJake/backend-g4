@@ -30,3 +30,9 @@ exports.getBlogsByTopic = function (topic) {
 exports.getBlogById = function (id) {
     return knex("Blogs").select("*").where({"id": id});
 };
+
+/* Get blogs based on tag matches*/
+exports.getBlogsBySearch = function (search) {
+    return knex("Blogs").select(Blog.browsingInfo).where("tags", "like", "%" + search + "%")
+    .orWhere("title", "like", "%" + search + "%");
+};

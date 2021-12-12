@@ -104,3 +104,13 @@ exports.newBlog = async function (req, res) {
         res.status(400).send(err.message);
     }
 };
+
+// search blogs with search bar, searches tag or title matches
+exports.searchBlogs = async function (req, res) {
+    try {
+        var results = await blogDb.getBlogsBySearch(req.params.search);
+        res.status(200).send(results);
+    } catch (err) {
+        res.status(400).send(err.message);
+    }
+};
