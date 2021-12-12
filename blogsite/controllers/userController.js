@@ -1,3 +1,6 @@
+const userDb = require("../db/User");
+const User = require("../models/User");
+
 // gets all users
 exports.getAllUsers = function (req, res) {
     res.send("gets all users");
@@ -12,6 +15,12 @@ exports.getUserWithId = function (req, res) {
 };
 
 // post a new user
-exports.newUser = function (req, res) {
-    res.send("new user");
+exports.newUser = async function (req, res) {
+    try {
+        var newUser = new User(req.body);
+        var results = await userDb.createUser(newUser);
+        res.status(201).send(results);
+    } catch (err){
+        res.status(400).send(err.message);
+    }
 };

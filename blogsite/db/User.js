@@ -1,4 +1,4 @@
-const knex = require("Knex");
+const knex = require("./Knex");
 
 // max amount of users sent on one request
 const userLimit = 25;
@@ -18,6 +18,7 @@ const userInfo = {
     profilePicture: string
 }*/
 exports.createUser = function (user) {
+    console.log(user);
     return knex("Users").insert(user);
 };
 
