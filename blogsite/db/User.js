@@ -10,7 +10,6 @@ const User = require("../models/User");
     profilePicture: string
 }*/
 exports.createUser = function (user) {
-    console.log(user);
     return knex("Users").insert(user);
 };
 
