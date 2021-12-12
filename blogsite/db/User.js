@@ -1,14 +1,6 @@
-const knex = require("Knex");
+const knex = require("./Knex");
 
-// max amount of users sent on one request
-const userLimit = 25;
-
-// what info is sent when browsing for users
-const userInfo = {
-    username: "username",
-    id: "id",
-    profilePicture: "profilePicture"
-};
+const User = require("../models/User");
 
 /* Creates a user to the database, takes a user object
 {
@@ -23,18 +15,19 @@ exports.createUser = function (user) {
 
 /* Gets all users from the database*/
 exports.getUsers = function () {
-    return knex("Users").select(userInfo).limit(userLimit);
+    return knex("Users").select(User.publicUserInfo).limit(User.userLimit);
 };
 
-/*Get all users with name search
-TODO: like*/
+/*Get all users with name search*/
 exports.getUsersByName = function (name) {
-    return knex("Users").select(userInfo).where({"Username": name}).limit(userLimit);
+    return knex("Users").select(User.publicUserInfo)
+    .where("username", "like", "%" + name + "%")
+    .limit(User.userLimit);
 };
 
 /* Get a user with id*/
 exports.getUserById = function (id) {
-    return knex("Users").select(userInfo).where({"id": id});
+    return knex("Users").select(User.publicUserInfo).where({"id": id});
 };
 
 /* Get all user data, only allowed if

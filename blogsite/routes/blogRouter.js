@@ -10,6 +10,8 @@ Router.get("/transport", blogController.getTransportBlogs);
 Router.get("/other", blogController.getOtherBlogs);
 Router.get("/:id", blogController.getBlogWithId);
 
+Router.get("/search/:search", blogController.searchBlogs);
+
 Router.post("/", blogController.newBlog);
 
 module.exports = Router;

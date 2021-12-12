@@ -1,32 +1,116 @@
+const blogDb = require("../db/Blog");
+const Blog = require("../models/Blog");
 
 // get newest blogs with no filtering to be shown on homepage
-exports.getBlogs = function (req, res) {
-    res.send("newly posted blogs for homepage");
+exports.getBlogs = async function (req, res) {
+    try {
+        var results = await blogDb.getBlogs();
+
+        // split the tags into an array
+        for (let i = 0; i < results.length; i++) {
+            results[i].tags = results[i].tags.split(",");
+        }
+        res.status(200).send(results);
+    } catch (err) {
+        res.status(400).send(err.message);
+    }
 };
 
 // get blogs based on categorization
-exports.getMusicBlogs = function (req, res) {
-    res.send("music blogs");
+// TODO: very copypaste, maybe refactor at some point?
+exports.getMusicBlogs = async function (req, res) {
+    try {
+        var results = await blogDb.getBlogsByTopic("Music");
+
+        // split the tags into an array
+        for (let i = 0; i < results.length; i++) {
+            results[i].tags = results[i].tags.split(",");
+        }
+        res.status(200).send(results);
+    } catch (err) {
+        res.status(400).send(err.message);
+    }
 };
-exports.getNatureBlogs = function (req, res) {
-    res.send("nature blogs");
+exports.getNatureBlogs = async function (req, res) {
+    try {
+        var results = await blogDb.getBlogsByTopic("Nature");
+
+        // split the tags into an array
+        for (let i = 0; i < results.length; i++) {
+            results[i].tags = results[i].tags.split(",");
+        }
+        res.status(200).send(results);
+    } catch (err) {
+        res.status(400).send(err.message);
+    }
 };
-exports.getTechnologyBlogs = function (req, res) {
-    res.send("technology blogs");
+exports.getTechnologyBlogs = async function (req, res) {
+    try {
+        var results = await blogDb.getBlogsByTopic("Technology");
+
+        // split the tags into an array
+        for (let i = 0; i < results.length; i++) {
+            results[i].tags = results[i].tags.split(",");
+        }
+        res.status(200).send(results);
+    } catch (err) {
+        res.status(400).send(err.message);
+    }
 };
-exports.getTransportBlogs = function (req, res) {
-    res.send("transport blogs");
+exports.getTransportBlogs = async function (req, res) {
+    try {
+        var results = await blogDb.getBlogsByTopic("Transport");
+
+        // split the tags into an array
+        for (let i = 0; i < results.length; i++) {
+            results[i].tags = results[i].tags.split(",");
+        }
+        res.status(200).send(results);
+    } catch (err) {
+        res.status(400).send(err.message);
+    }
 };
-exports.getOtherBlogs = function (req, res) {
-    res.send("other blogs");
+exports.getOtherBlogs = async function (req, res) {
+    try {
+        var results = await blogDb.getBlogsByTopic("Other");
+
+        // split the tags into an array
+        for (let i = 0; i < results.length; i++) {
+            results[i].tags = results[i].tags.split(",");
+        }
+        res.status(200).send(results);
+    } catch (err) {
+        res.status(400).send(err.message);
+    }
 };
 
 // get specific blog for proper reading view
-exports.getBlogWithId = function (req, res) {
-    res.send("blog with id: " + req.params.id);
+exports.getBlogWithId = async function (req, res) {
+    try {
+        var results = await blogDb.getBlogById(req.params.id);
+        res.status(200).send(results);
+    } catch (err) {
+        res.status(400).send(err.message);
+    }
 };
 
 // post a new blog
-exports.newBlog = function (req, res) {
-    res.send("new blog");
+exports.newBlog = async function (req, res) {
+    try {
+        var newBlog = new Blog(req.body);
+        var results = await blogDb.createBlog(newBlog);
+        res.status(201).send(results);
+    } catch (err) {
+        res.status(400).send(err.message);
+    }
+};
+
+// search blogs with search bar, searches tag or title matches
+exports.searchBlogs = async function (req, res) {
+    try {
+        var results = await blogDb.getBlogsBySearch(req.params.search);
+        res.status(200).send(results);
+    } catch (err) {
+        res.status(400).send(err.message);
+    }
 };
