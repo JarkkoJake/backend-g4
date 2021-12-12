@@ -5,7 +5,6 @@ const Blog = require("../models/Blog");
 exports.getBlogs = async function (req, res) {
     try {
         var results = await blogDb.getBlogs();
-        console.log(results);
         res.status(200).send(results);
     } catch (err) {
         res.status(400).send(err.message);
@@ -13,20 +12,46 @@ exports.getBlogs = async function (req, res) {
 };
 
 // get blogs based on categorization
-exports.getMusicBlogs = function (req, res) {
-    res.send("music blogs");
+// TODO: very copypaste, maybe refactor at some point?
+exports.getMusicBlogs = async function (req, res) {
+    try {
+        var results = await blogDb.getBlogsByTopic("Music");
+        res.status(200).send(results);
+    } catch (err) {
+        res.status(400).send(err.message);
+    }
 };
-exports.getNatureBlogs = function (req, res) {
-    res.send("nature blogs");
+exports.getNatureBlogs = async function (req, res) {
+    try {
+        var results = await blogDb.getBlogsByTopic("Nature");
+        res.status(200).send(results);
+    } catch (err) {
+        res.status(400).send(err.message);
+    }
 };
-exports.getTechnologyBlogs = function (req, res) {
-    res.send("technology blogs");
+exports.getTechnologyBlogs = async function (req, res) {
+    try {
+        var results = await blogDb.getBlogsByTopic("Technology");
+        res.status(200).send(results);
+    } catch (err) {
+        res.status(400).send(err.message);
+    }
 };
-exports.getTransportBlogs = function (req, res) {
-    res.send("transport blogs");
+exports.getTransportBlogs = async function (req, res) {
+    try {
+        var results = await blogDb.getBlogsByTopic("Transport");
+        res.status(200).send(results);
+    } catch (err) {
+        res.status(400).send(err.message);
+    }
 };
-exports.getOtherBlogs = function (req, res) {
-    res.send("other blogs");
+exports.getOtherBlogs = async function (req, res) {
+    try {
+        var results = await blogDb.getBlogsByTopic("Other");
+        res.status(200).send(results);
+    } catch (err) {
+        res.status(400).send(err.message);
+    }
 };
 
 // get specific blog for proper reading view
