@@ -2,8 +2,14 @@ const blogDb = require("../db/Blog");
 const Blog = require("../models/Blog");
 
 // get newest blogs with no filtering to be shown on homepage
-exports.getBlogs = function (req, res) {
-    res.send("newly posted blogs for homepage");
+exports.getBlogs = async function (req, res) {
+    try {
+        var results = await blogDb.getBlogs();
+        console.log(results);
+        res.status(200).send(results);
+    } catch (err) {
+        res.status(400).send(err.message);
+    }
 };
 
 // get blogs based on categorization
