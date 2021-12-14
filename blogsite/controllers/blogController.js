@@ -2,7 +2,7 @@ const blogDb = require("../db/Blog");
 const Blog = require("../models/Blog");
 
 // get newest blogs with no filtering to be shown on homepage
-exports.getBlogs = async function (req, res) {
+exports.getBlogs = async function (req, res, next) {
     try {
         var results = await blogDb.getBlogs();
 
@@ -10,7 +10,8 @@ exports.getBlogs = async function (req, res) {
         for (let i = 0; i < results.length; i++) {
             results[i].tags = results[i].tags.split(",");
         }
-        res.status(200).send(results);
+        res.locals.blogs = results;
+        next();
     } catch (err) {
         res.status(400).send(err.message);
     }
@@ -18,7 +19,7 @@ exports.getBlogs = async function (req, res) {
 
 // get blogs based on categorization
 // TODO: very copypaste, maybe refactor at some point?
-exports.getMusicBlogs = async function (req, res) {
+exports.getMusicBlogs = async function (req, res, next) {
     try {
         var results = await blogDb.getBlogsByTopic("Music");
 
@@ -26,7 +27,8 @@ exports.getMusicBlogs = async function (req, res) {
         for (let i = 0; i < results.length; i++) {
             results[i].tags = results[i].tags.split(",");
         }
-        res.status(200).send(results);
+        res.locals.blogs = results;
+        next();
     } catch (err) {
         res.status(400).send(err.message);
     }
