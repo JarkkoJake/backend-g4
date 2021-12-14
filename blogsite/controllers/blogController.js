@@ -31,6 +31,7 @@ exports.getMusicBlogs = async function (req, res) {
         res.status(400).send(err.message);
     }
 };
+
 exports.getNatureBlogs = async function (req, res) {
     try {
         var results = await blogDb.getBlogsByTopic("Nature");
