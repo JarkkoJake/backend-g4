@@ -1,0 +1,50 @@
+<!--Home Page-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mega Blog</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div id="nav">
+		<div class="col-sm nav-align">
+			<h1 id="title">BLOGSITE</h1>
+		</div>
+		<div class="col-sm nav-align">
+			<a href="/">
+				<span class="button">Home</span>
+			</a>
+			<a href="blogs/music">
+				<span class="button">Music</span>
+			</a>
+			<a href="blogs/technology">
+				<span class="button">Technology</span>
+			</a>
+            <a href="blogs/nature">
+				<span class="button">Nature</span>
+			</a>
+            <a href="blogs/transport">
+				<span class="button">Transport</span>
+			</a>
+            <a href="blogs/other">
+				<span class="button">Other</span>
+			</a>
+		</div> 
+    </div>
+
+    <!-- Style page elements -->
+    <div class="container"> <!-- Uus class, center -->
+		<%- body %>
+        <div id="title"> <!-- Uus class, absolute alhaalla -->
+            <%- include("partials/footer") %>
+        </div>
+	</div>
+</body>
+</html>
+
+
+
