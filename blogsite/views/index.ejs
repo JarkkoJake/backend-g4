@@ -16,7 +16,7 @@
             <p>Welcome to reddit</p>
             <!--Example loop-->
             <% blogs.forEach(blog => { %>
-                <p><%= blog.title %></p>
+                <p><%= blog.date ? blog.date : "no date" %></p>
             <% });%>
             </nav>
         </header>
