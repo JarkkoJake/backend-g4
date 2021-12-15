@@ -38,6 +38,7 @@ app.use((req, res, next) => {
     next();
 });
 
-app.set("view engine", "ejs");
+app.set("view engine", "ejs");  // Pitäis saada layout toimimaan myös subfoldereille (users)
+app.set("views");
 
 app.listen(3000, () => {console.log("server running on port 3000")});
