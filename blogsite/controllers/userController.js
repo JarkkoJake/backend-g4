@@ -1,6 +1,7 @@
 const userDb = require("../db/User");
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
+const res = require("express/lib/response");
 
 // gets all users
 exports.getAllUsers = async function (req, res) {
@@ -24,10 +25,8 @@ exports.getUsersWithName = async function (req, res) {
 exports.getUserWithId = async function (req, res, next) {
     try {
         var results = await userDb.getUserById(req.params.id);
-        //res.status(200).send(results);
         req.flash("succes", "test");
         res.locals.user = results[0];
-        console.log(results);
         next();
     } catch (err){
         res.status(400).send(err.message);
@@ -41,9 +40,6 @@ exports.newUser = async function (req, res, next) {
         newUser.password = await bcrypt.hash(newUser.password, 10);
         var results = await userDb.createUser(newUser);
         req.flash("success", "User created!");
-        newUser.id = results[0];
-        res.locals.user = newUser;
-        console.log(newUser);
         res.locals.redirect = "/user/" + results[0];
         next();
     } catch (err){
@@ -51,6 +47,7 @@ exports.newUser = async function (req, res, next) {
         next();
     }
 };
+
 // renders a profile page view
 exports.profilePage = function (req, res) {
     res.render("users/profilepage");
@@ -59,4 +56,9 @@ exports.profilePage = function (req, res) {
 // renders a form to create new user
 exports.newUserForm = function (req, res) {
     res.render("users/new");
+};
+
+// render a login page
+exports.loginPage = function (req, res) {
+    res.render("users/login");
 };
