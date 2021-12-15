@@ -9,6 +9,8 @@ expressSession = require("express-session"),
 cookieParser = require("cookie-parser"),
 connectFlash = require("connect-flash");
 
+const passport = require("./passport-config");
+
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(layouts);
@@ -23,8 +25,18 @@ app.use(expressSession({
     saveUninitialized: false
 }));
 app.use(connectFlash());
+app.use(passport.initialize());
+app.use(passport.session());
 app.use((req, res, next) => {
     res.locals.flashMessage = req.flash();
+    next();
+});
+app.use((req, res, next) => {
+    res.locals.loggedIn = req.isAuthenticated();
+    if (res.locals.loggedIn) {
+        console.log(req.user);
+        res.locals.currentUser = req.user[0];
+    }
     next();
 });
 

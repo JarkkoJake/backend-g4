@@ -14,9 +14,10 @@
     <div>
         <header>
             <h1 id="title">HOME</h1>
-            <p>Welcome to music</p>
-            <%= user.username %>
-<%= flashMessage %>
+            <p>Welcome to profile</p>
+            <% if (loggedIn) {%>
+            <%= currentUser.username%>
+            <%}%>
             </nav>
         </header>
     </div>
