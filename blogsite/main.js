@@ -33,6 +33,7 @@ app.use((req, res, next) => {
 });
 app.use((req, res, next) => {
     res.locals.loggedIn = req.isAuthenticated();
+    console.log(res.locals.loggedIn);
     if (res.locals.loggedIn) {
         console.log(req.user);
         res.locals.currentUser = req.user[0];

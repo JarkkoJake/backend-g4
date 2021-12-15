@@ -3,6 +3,8 @@ const Router = express.Router();
 const userController = require("../controllers/userController");
 const passport = require("../passport-config");
 
+Router.use(express.static("public"));
+
 Router.get("/", userController.getAllUsers);
 Router.get("/username/:username", userController.getUsersWithName);
 Router.get("/new", userController.newUserForm);
