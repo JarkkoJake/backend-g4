@@ -159,11 +159,25 @@ button[type=submit] {
 }
 .blog {
   width: 96%;
-  padding: 2% 0% 2% 2%;
+  padding: 0%;
   margin: 2% 2% 0% 2%;
   text-align: left;
   background-color: #FFAC5F;
   border-radius: 1vmin;
+}
+.blog > img {
+  width: 15%;
+  float: left;
+  border-radius: 1vmin;;
+}
+.blog > div {
+  height: 50%;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  font-size: large;
+  overflow: hidden;
 }
 
 @media (max-width: 760px) {
