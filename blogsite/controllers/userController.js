@@ -49,6 +49,12 @@ exports.newUser = async function (req, res, next) {
         next();
     }
 };
+// renders a profile page view
 exports.profilePage = function (req, res) {
     res.render("users/profilepage");
+};
+
+// renders a form to create new user
+exports.newUserForm = function (req, res) {
+    res.render("users/new");
 };
