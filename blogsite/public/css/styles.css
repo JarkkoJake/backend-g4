@@ -165,6 +165,7 @@ button[type=submit] {
 .blogContainer > article {
   font-size: 2vmin;
   margin: 3%;
+  word-break: break-all;
 }
 .blog {
   width: 96%;
