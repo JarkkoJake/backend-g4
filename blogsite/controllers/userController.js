@@ -1,5 +1,6 @@
 const userDb = require("../db/User");
 const User = require("../models/User");
+const bcrypt = require("bcrypt");
 
 // gets all users
 exports.getAllUsers = async function (req, res) {
@@ -37,6 +38,7 @@ exports.getUserWithId = async function (req, res, next) {
 exports.newUser = async function (req, res, next) {
     try {
         var newUser = new User(req.body);
+        newUser.password = await bcrypt.hash(newUser.password, 10);
         var results = await userDb.createUser(newUser);
         req.flash("success", "User created!");
         newUser.id = results[0];
