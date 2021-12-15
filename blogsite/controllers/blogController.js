@@ -120,6 +120,7 @@ exports.newBlog = async function (req, res, next) {
             newBlog.thumbnail = filepath;
             await file.mv(root + "/public/images/" + file.name);
         }
+        newBlog.user = res.locals.currentUser.id;
         var results = await blogDb.createBlog(newBlog);
         res.locals.redirect = "/" + results[0];
         next();
