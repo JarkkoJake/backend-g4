@@ -3,7 +3,7 @@ const Router = express.Router();
 const blogController = require("../controllers/blogController");
 const homeController = require("../controllers/homeController");
 
-Router.get("/", blogController.getBlogs, homeController.index);
+Router.get("/", blogController.getBlogs);
 Router.get("/music", blogController.getMusicBlogs, homeController.music);
 Router.get("/nature", blogController.getNatureBlogs, homeController.nature);
 Router.get("/technology", blogController.getTechnologyBlogs, homeController.technology);
