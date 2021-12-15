@@ -1,6 +1,6 @@
 <% blogs.forEach(blog => { %>
     <a href="/<%= blog.id ? blog.id : 0 %>" class="blog">
-        <img src="images/päärynä.jpg">
+        <img src="<%= blog.thumbnail != ' ' ? blog.thumbnail : 'images/päärynä.jpg'%>">
         <div>
             <h2><%= blog.title ? blog.title : "no title" %></h2>
             <p><%= blog.date ? blog.date : "no date" %></p>

@@ -1,5 +1,6 @@
 const blogDb = require("../db/Blog");
 const Blog = require("../models/Blog");
+const root = require("../root");
 
 // get newest blogs with no filtering to be shown on homepage
 exports.getBlogs = async function (req, res, next) {
@@ -112,6 +113,13 @@ exports.newBlog = async function (req, res, next) {
     try {
         var newBlog = new Blog(req.body);
         console.log(newBlog);
+        if (req.files) {
+            console.log("file realized")
+            let file = req.files.thumbnail;
+            let filepath = "images/" + file.name;
+            newBlog.thumbnail = filepath;
+            await file.mv(root + "/public/images/" + file.name);
+        }
         var results = await blogDb.createBlog(newBlog);
         res.locals.redirect = "/" + results[0];
         next();
