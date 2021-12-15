@@ -23,7 +23,8 @@
         tags: "tags",
         topic: "topic",
         thumbnail: "thumbnail",
-        date: "date"
+        date: "date",
+        user: "user"
     };
  }
 
