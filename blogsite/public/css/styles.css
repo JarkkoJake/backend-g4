@@ -155,6 +155,16 @@ button[type=submit] {
   background-color: antiquewhite;
   border-radius: 1vmin;
 }
+.blogContainer > div {
+  width: 30vh;
+  margin: 3%;
+  float: left;
+  border-radius: 1vmin;
+}
+.blogContainer > article {
+  font-size: 2vmin;
+  margin: 3%;
+}
 .blog {
   width: 96%;
   height: 25%;

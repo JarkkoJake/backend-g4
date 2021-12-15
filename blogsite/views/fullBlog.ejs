@@ -14,13 +14,16 @@
             <% blogs.forEach(blog => { %>
                 <h1 id="title"><%= blog.title ? blog.title : "no title" %></h1>
                 <div class="blogContainer">
-                    <img src="images/päärynä.jpg">
-                    <p><%= blog.content ? blog.content : "no content" %></p>
                     <div>
+                        <img src="images/päärynä.jpg">
                         <p><%= blog.date ? blog.date : "no date" %></p>
                         <p>Topic: <%= blog.topic ? blog.topic : "no topic" %></p>
                         <p>Tags: <%= blog.tags ? blog.tags : "no tags" %></p>
                     </div>
+                    <article>
+                        <%= blog.content ? blog.content : "no content" %>
+                    </article>
+
                 <% });%>
             </div>
             </nav>
