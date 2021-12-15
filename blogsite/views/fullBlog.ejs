@@ -23,9 +23,14 @@
                     <article>
                         <%= blog.content ? blog.content : "no content" %>
                     </article>
-
-                <% });%>
-            </div>
+                </div>
+                <% if (loggedIn) { %>
+                    <%- include("partials/commentform"); %>
+                <% } %>
+                <% if (blog.comments.length > 0) { %>
+                    <%- include("partials/comments")%>
+                <% } %>
+            <% });%>
             </nav>
         </header>
     </div>

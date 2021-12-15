@@ -5,7 +5,7 @@ exports.newComment = async function (req, res, next) {
     try {
         let newComment = new Comment(req.body);
         newComment.user = res.locals.currentUser.id;
-        newComment.blod = req.params.id;
+        newComment.blog = req.params.id;
         await commentDb.createComment(newComment);
         res.locals.redirect = "/" + req.params.id;
         next();
