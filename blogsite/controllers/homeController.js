@@ -3,7 +3,19 @@ module.exports = {
         res.render("index");
     },
     music: (req, res) => {
-        res.render("blogs/music");
+        res.render("music");
+    },
+    technology: (req, res) => {
+        res.render("technology");
+    },
+    nature: (req, res) => {
+        res.render("nature");
+    },
+    transport: (req, res) => {
+        res.render("transport");
+    },
+    other: (req, res) => {
+        res.render("other");
     },
     logRequestPaths: (req, res, next) => {
         console.log(`request made to: ${req.url}`);
