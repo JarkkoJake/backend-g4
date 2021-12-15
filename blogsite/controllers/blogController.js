@@ -108,12 +108,13 @@ exports.getBlogWithId = async function (req, res, next) {
 };
 
 // post a new blog
-exports.newBlog = async function (req, res) {
+exports.newBlog = async function (req, res, next) {
     try {
         var newBlog = new Blog(req.body);
         console.log(newBlog);
         var results = await blogDb.createBlog(newBlog);
-        res.status(201).send(results);
+        res.locals.redirect = "/" + results[0];
+        next();
     } catch (err) {
         res.status(400).send(err.message);
     }
