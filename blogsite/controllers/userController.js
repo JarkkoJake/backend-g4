@@ -55,17 +55,13 @@ exports.login = async function (req, res, next) {
             req.flash("success", user.username + " logged in");
             res.locals.loggedIn = true;
             res.locals.currentUser = user;
-            next();
         } else {
             res.redirect = "/user/login";
             req.flash("error", "Invalid credentials");
-            next();
         }
-    } else {
-        res.redirect = "/user/login";
-        req.flash("error", "Invalid credentials");
-        next();
     }
+    next();
+    
 };
 
 /* -----View Rendering-------*/
