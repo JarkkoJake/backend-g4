@@ -44,7 +44,9 @@
     <!-- Style page elements -->
     <div>
 		<div>
+			<% if (loggedIn) {%>
 			<%- include("partials/newblog.ejs") %>
+			<% } %>
 		</div>
 		<div class="layout-container-body">
 			<%- body %>
