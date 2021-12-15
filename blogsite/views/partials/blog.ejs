@@ -1,0 +1,11 @@
+<% blogs.forEach(blog => { %>
+    <button class="blog">
+        <img src="images/päärynä.jpg">
+        <div>
+            <h1><%= blog.title ? blog.title : "no title" %></h1>
+            <p><%= blog.date ? blog.date : "no date" %></p>
+            <p>Topic: <%= blog.topic ? blog.topic : "no date" %></p>
+            <p>Tags: <%= blog.tags ? blog.tags : "no date" %></p>
+        </div>
+    </button>
+<% });%>

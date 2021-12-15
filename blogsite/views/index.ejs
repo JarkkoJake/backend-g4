@@ -1,4 +1,3 @@
-<!--Home Page-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,15 +12,10 @@
     <div>
         <header>
             <h1 id="title">HOME</h1>
-            <p>Welcome to reddit</p>
+            <p>Newest blogs</p>
             <!--Example loop-->
             <div class="blogContainer">
-                <% blogs.forEach(blog => { %>
-                    <button class="blog">
-                        <p><%= blog.title ? blog.title : "no title" %></p>
-                        <p><%= blog.date ? blog.date : "no date" %></p>
-                    </button>
-                <% });%>
+                <%- include("partials/blog") %>
             </div>
             </nav>
         </header>
