@@ -1,5 +1,6 @@
 const blogDb = require("../db/Blog");
 const userDb = require("../db/User");
+const commentDb = require("../db/Comment");
 const Blog = require("../models/Blog");
 const root = require("../root");
 
@@ -107,6 +108,7 @@ exports.getBlogWithId = async function (req, res, next) {
         for (let i = 0; i < results.length; i++) {
             results[i].tags = results[i].tags.split(",");
             results[i].user = (await userDb.getUserById(results[i].user))[0];
+            results[i].comments = await commentDb.getComments(results[i].id);
         }
         //res.status(200).send(results);
         res.locals.blogs = results;
