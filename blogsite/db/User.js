@@ -25,6 +25,11 @@ exports.getUsersByName = function (name) {
     .limit(User.userLimit);
 };
 
+// get user by email
+exports.getUserByEmail = function (email) {
+    return knex("Users").select("*").where({"email": email});
+};
+
 /* Get a user with id*/
 exports.getUserById = function (id) {
     return knex("Users").select(User.publicUserInfo).where({"id": id});
