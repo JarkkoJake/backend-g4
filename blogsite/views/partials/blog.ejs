@@ -1,0 +1,36 @@
+<head>
+    <style>
+        #header {
+            font-size: 15px;
+            position: relative;
+            margin-top: 50px;
+        }
+        #date {
+            position: relative;
+            font-size: 12px;
+            margin-top: 0.5vh;
+        }
+        #topic {
+            position: relative;
+            font-size: 12px; 
+            margin-top: 0.5vh;  
+        }
+        #tags {
+            position: relative;
+            font-size: 12px;
+            margin-top: 0.5vh;
+        }
+    </style>
+</head>
+
+<% blogs.forEach(blog => { %>
+    <button class="blog">
+        <img src="images/päärynä.jpg">
+        <div>
+            <h1 id="header"><%= blog.title ? blog.title : "no title" %></h1>
+            <p id="date"><%= blog.date ? blog.date : "no date" %></p>
+            <p id="topic">Topic: <%= blog.topic ? blog.topic : "no date" %></p>
+            <p id="tags">Tags: <%= blog.tags ? blog.tags : "no date" %></p>
+        </div>
+    </button>
+<% });%>
