@@ -15,7 +15,7 @@
                 <h1 id="title"><%= blog.title ? blog.title : "no title" %></h1>
                 <div class="blogContainer">
                     <div>
-                        <img src="images/päärynä.jpg">
+                        <img src="<%= blog.thumbnail != ' ' ? blog.thumbnail : 'images/päärynä.jpg' %>">
                         <p><%= blog.date ? blog.date : "no date" %></p>
                         <p>Topic: <%= blog.topic ? blog.topic : "no topic" %></p>
                         <p>Tags: <%= blog.tags ? blog.tags : "no tags" %></p>

@@ -8,9 +8,11 @@ bodyParser = require("body-parser"),
 expressSession = require("express-session"),
 cookieParser = require("cookie-parser"),
 connectFlash = require("connect-flash");
+const fileupload = require("express-fileupload");
 
 const passport = require("./passport-config");
 
+app.use(fileupload());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(layouts);
@@ -41,6 +43,17 @@ app.use((req, res, next) => {
     next();
 });
 
+app.get("/test", (req, res) => {
+    res.sendFile(__dirname + "/test.html");
+});
+app.post("/test", (req, res) => {
+    if (req.files) {
+        let file = req.files.file;
+        let filename = file.name;
+        file.mv(__dirname + "/public/images/" + filename);
+    }
+    res.send("test")
+});
 app.use("/user", userRouter);
 app.use("/", homeRouter);
 app.use("/blog", blogRouter);
