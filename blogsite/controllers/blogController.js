@@ -109,6 +109,9 @@ exports.getBlogWithId = async function (req, res, next) {
             results[i].tags = results[i].tags.split(",");
             results[i].user = (await userDb.getUserById(results[i].user))[0];
             results[i].comments = await commentDb.getComments(results[i].id);
+            for (let j = 0; j < results[i].comments.length; j++) {
+                results[i].comments[j].user = (await userDb.getUserById(results[i].comments[j].user))[0].username || "removed user";
+            }
         }
         //res.status(200).send(results);
         res.locals.blogs = results;
