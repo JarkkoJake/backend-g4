@@ -43,17 +43,6 @@ app.use((req, res, next) => {
     next();
 });
 
-app.get("/test", (req, res) => {
-    res.sendFile(__dirname + "/test.html");
-});
-app.post("/test", (req, res) => {
-    if (req.files) {
-        let file = req.files.file;
-        let filename = file.name;
-        file.mv(__dirname + "/public/images/" + filename);
-    }
-    res.send("test")
-});
 app.use("/user", userRouter);
 app.use("/", homeRouter);
 app.use("/blog", blogRouter);
