@@ -20,6 +20,9 @@ module.exports = {
     fullBlog: (req, res) => {
         res.render("fullBlog");
     },
+    login: (req, res) => {
+        res.render("login");
+    },
     logRequestPaths: (req, res, next) => {
         console.log(`request made to: ${req.url}`);
         next();

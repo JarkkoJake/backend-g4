@@ -1,22 +1,18 @@
-
-<!--Home Page-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mega Blog</title>
+    <title>Profile</title>
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <div>
         <header>
-            <h1 id="title">HOME</h1>
-            <p>Welcome to music</p>
-            <%= user.username %>
-<%= flashMessage %>
+            <h1 id="title">Profile</h1>
+            <p>Welcome <%= loggedIn ? currentUser.username : " "%></p>  <!-- Dunno -->
             </nav>
         </header>
     </div>
