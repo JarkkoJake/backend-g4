@@ -1,0 +1,4 @@
+<% blogs[0].comments.forEach(comment => { %>
+    <p><%= comment.comment %></p>
+    <p><%= "posted " + comment.date + " by " + comment.user%></p>
+<% });%>
