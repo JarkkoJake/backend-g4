@@ -9,5 +9,6 @@ Router.get("/:id", userController.getUserWithId, userController.profilePage);
 
 
 Router.post("/", userController.newUser);
+Router.post("/login", userController.login);
 
 module.exports = Router;

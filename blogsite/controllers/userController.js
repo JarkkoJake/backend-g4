@@ -1,7 +1,6 @@
 const userDb = require("../db/User");
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
-const res = require("express/lib/response");
 
 // gets all users
 exports.getAllUsers = async function (req, res) {
@@ -47,6 +46,29 @@ exports.newUser = async function (req, res, next) {
         next();
     }
 };
+
+exports.login = async function (req, res, next) {
+    let user = (await userDb.getUserByEmail(req.body.email))[0];
+    if (user) {
+        if (bcrypt.compare(req.body.password, user.password)) {
+            res.locals.redirect = "/user/" + user.id;
+            req.flash("success", user.username + " logged in");
+            res.locals.loggedIn = true;
+            res.locals.currentUser = user;
+            next();
+        } else {
+            res.redirect = "/user/login";
+            req.flash("error", "Invalid credentials");
+            next();
+        }
+    } else {
+        res.redirect = "/user/login";
+        req.flash("error", "Invalid credentials");
+        next();
+    }
+};
+
+/* -----View Rendering-------*/
 
 // renders a profile page view
 exports.profilePage = function (req, res) {
