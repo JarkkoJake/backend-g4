@@ -73,7 +73,7 @@ exports.profilePage = function (req, res) {
 
 // renders a form to create new user
 exports.newUserForm = function (req, res) {
-    res.render("users/new");
+    res.render("users/register");
 };
 
 // render a login page

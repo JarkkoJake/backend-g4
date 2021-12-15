@@ -15,7 +15,7 @@
          this.username = data.username
          this.password = data.password
          this.email = data.email
-         this.profilePicture = data.profilePicture
+         this.profilePicture = data.profilePicture || " "
          this.bio = data.bio
          this.date = moment().format("Do of MMMM YYYY, h:mm:ss a");
      }
