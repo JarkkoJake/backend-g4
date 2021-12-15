@@ -17,6 +17,9 @@ module.exports = {
     other: (req, res) => {
         res.render("other");
     },
+    fullBlog: (req, res) => {
+        res.render("fullBlog");
+    },
     login: (req, res) => {
         res.render("login");
     },

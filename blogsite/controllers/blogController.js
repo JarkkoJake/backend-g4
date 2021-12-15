@@ -92,10 +92,16 @@ exports.getOtherBlogs = async function (req, res, next) {
 };
 
 // get specific blog for proper reading view
-exports.getBlogWithId = async function (req, res) {
+exports.getBlogWithId = async function (req, res, next) {
     try {
         var results = await blogDb.getBlogById(req.params.id);
-        res.status(200).send(results);
+        
+        for (let i = 0; i < results.length; i++) {
+            results[i].tags = results[i].tags.split(",");
+        }
+        //res.status(200).send(results);
+        res.locals.blogs = results;
+        next();
     } catch (err) {
         res.status(400).send(err.message);
     }
