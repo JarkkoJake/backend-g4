@@ -10,39 +10,44 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <div id="nav">
-		<div class="col-sm nav-align">
-			<h1 id="title">BLOGSITE</h1>
+	<div class="layout-container">
+		<div id="nav">
+			<div class="col-sm nav-align">
+				<h1 id="title">BLOGSITE</h1>
+			</div>
+			<div class="col-sm nav-align">
+				<a href="/">
+					<span class="button">Home</span>
+				</a>
+				<a href="/music">
+					<span class="button">Music</span>
+				</a>
+				<a href="/technology">
+					<span class="button">Technology</span>
+				</a>
+				<a href="/nature">
+					<span class="button">Nature</span>
+				</a>
+				<a href="/transport">
+					<span class="button">Transport</span>
+				</a>
+				<a href="/other">
+					<span class="button">Other</span>
+				</a>
+			</div> 
 		</div>
-		<div class="col-sm nav-align">
-			<a href="/">
-				<span class="button">Home</span>
-			</a>
-			<a href="/music">
-				<span class="button">Music</span>
-			</a>
-			<a href="/technology">
-				<span class="button">Technology</span>
-			</a>
-            <a href="/nature">
-				<span class="button">Nature</span>
-			</a>
-            <a href="/transport">
-				<span class="button">Transport</span>
-			</a>
-            <a href="/other">
-				<span class="button">Other</span>
-			</a>
-		</div> 
-    </div>
+	</div>
 
     <!-- Style page elements -->
-    <div class="container"> <!-- Uus class, center -->
-		<%- body %>
-        <div id="title"> <!-- Uus class, absolute alhaalla -->
-            <%- include("partials/footer") %>
-        </div>
+    <div> <!-- Uus class, center -->
+		<div class="layout-container-body">
+			<%- body %>
+		</div>
 	</div>
+	<div class="push"></div>
+	<footer>
+		<%- include("partials/footer") %>
+	</footer>
 </body>
 </html>
 
