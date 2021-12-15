@@ -3,8 +3,12 @@
 body {
   margin: 0;
   padding-top: 130px;
+  overflow-y: hidden;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: #625a56;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 #nav {
@@ -44,7 +48,8 @@ a {
 }
 
 .container {
-  padding: 0% 10%;
+  padding: 0% 0%;
+  overflow-y: hidden;
 }
 
 .button {
@@ -131,6 +136,34 @@ button[type=submit] {
   padding: 10px;
   background: #c1ffc1;
   border-radius: 20px;
+}
+.layout-container {
+  flex: 1 0 auto;
+}
+.layout-container-body {
+  padding: 5% 5%;
+}
+.push {
+  height: 50px;
+}
+
+/* BLOG STYLES */
+.blogContainer {
+  height: 70vh;
+  padding-bottom: 2%;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  background-color: antiquewhite;
+  border-radius: 1vmin;
+}
+.blog {
+  width: 96%;
+  padding: 2% 0% 2% 2%;
+  margin: 2% 2% 0% 2%;
+  text-align: left;
+  background-color: #FFAC5F;
+  border-radius: 1vmin;
 }
 
 @media (max-width: 760px) {

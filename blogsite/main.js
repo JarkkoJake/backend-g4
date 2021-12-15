@@ -19,13 +19,18 @@ app.use(bodyParser.json());
 app.use(layouts);
 app.use(express.static("public"));
 app.use("/user", userRouter);
-app.use("/blog", blogRouter);
+app.use("/", blogRouter);
 
 app.set("view engine", "ejs");
 
 
 router.use(homeController.logRequestPaths);
 router.get("/", homeController.index);
+router.get("/music", homeController.music);
+router.get("/technology", homeController.technology);
+router.get("/nature", homeController.nature);
+router.get("/transport", homeController.transport);
+router.get("/other", homeController.other);
 router.use(express.static("public"));
 router.use(layouts);
 router.use(
@@ -33,11 +38,7 @@ router.use(
         extended: false
     })
 );
+app.use("/blog", router);
 
-
-// Pitäis figure outtaa miten renderaa viewit esim. music blogeihin? 
-// Homecontrollerin kautta index toimii hyvin
-
-app.use("/", router);
 
 app.listen(3000, () => {console.log("server running on port 3000")});
