@@ -9,16 +9,10 @@ user = require("./models/User"),
 blogController = require("./controllers/blogController"),
 userController = require("./controllers/userController"),
 homeController = require("./controllers/homeController"),
-bodyParser = require("body-parser");
-
-/* 
+bodyParser = require("body-parser"),
+expressSession = require("express-session"),
 cookieParser = require("cookie-parser"),
-connectFlash = require("connect-flash"),
-expressValidator = require("express-validator"),
-passport = require("passport"),
-*/
-
-
+connectFlash = require("connect-flash");
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
@@ -39,6 +33,7 @@ router.use(
         extended: false
     })
 );
+
 
 // Pitäis figure outtaa miten renderaa viewit esim. music blogeihin? 
 // Homecontrollerin kautta index toimii hyvin

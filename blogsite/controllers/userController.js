@@ -20,22 +20,35 @@ exports.getUsersWithName = async function (req, res) {
     }
 };
 // get specific user with id
-exports.getUserWithId = async function (req, res) {
+exports.getUserWithId = async function (req, res, next) {
     try {
         var results = await userDb.getUserById(req.params.id);
-        res.status(200).send(results);
+        //res.status(200).send(results);
+        req.flash("succes", "test");
+        res.locals.user = results[0];
+        console.log(results);
+        next();
     } catch (err){
         res.status(400).send(err.message);
     }
 };
 
 // post a new user
-exports.newUser = async function (req, res) {
+exports.newUser = async function (req, res, next) {
     try {
         var newUser = new User(req.body);
         var results = await userDb.createUser(newUser);
-        res.status(201).send(results);
+        req.flash("success", "User created!");
+        newUser.id = results[0];
+        res.locals.user = newUser;
+        console.log(newUser);
+        res.locals.redirect = "/user/" + results[0];
+        next();
     } catch (err){
-        res.status(400).send(err.message);
+        req.flash("error", "Failed to create user");
+        next();
     }
+};
+exports.profilePage = function (req, res) {
+    res.render("users/profilepage");
 };
