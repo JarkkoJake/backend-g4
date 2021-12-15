@@ -16,7 +16,7 @@
                 <div class="blogContainer">
                     <div>
                         <img src="<%= blog.thumbnail != ' ' ? blog.thumbnail : 'images/päärynä.jpg' %>">
-                        <p><%= blog.date ? blog.date : "no date" %></p>
+                        <p><%= blog.date ? blog.date : "no date" %> By: <%= blog.user ? blog.user.username : "removed user"%></p>
                         <p>Topic: <%= blog.topic ? blog.topic : "no topic" %></p>
                         <p>Tags: <%= blog.tags ? blog.tags : "no tags" %></p>
                     </div>
