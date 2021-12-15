@@ -10,5 +10,6 @@ router.get("/technology", blogController.getTechnologyBlogs, homeController.tech
 router.get("/nature", blogController.getNatureBlogs, homeController.nature);
 router.get("/transport", blogController.getTransportBlogs, homeController.transport);
 router.get("/other", blogController.getOtherBlogs, homeController.other);
+router.get("/:id", blogController.getBlogWithId, homeController.fullBlog);
 
 module.exports = router;

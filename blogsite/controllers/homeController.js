@@ -17,6 +17,9 @@ module.exports = {
     other: (req, res) => {
         res.render("other");
     },
+    fullBlog: (req, res) => {
+        res.render("fullBlog");
+    },
     logRequestPaths: (req, res, next) => {
         console.log(`request made to: ${req.url}`);
         next();

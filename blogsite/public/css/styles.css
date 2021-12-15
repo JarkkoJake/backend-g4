@@ -197,6 +197,10 @@ color: #FFAC5F;
 .blog:active {
   background-color: #ff7b00;
 }
+.blog:hover {
+  color: #333;
+  text-decoration: none;
+}
 
 @media (max-width: 760px) {
   .login-status .bubble {

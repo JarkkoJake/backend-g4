@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mega Blog</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div>
+        <header>
+            <% blogs.forEach(blog => { %>
+                <h1 id="title"><%= blog.title ? blog.title : "no title" %></h1>
+                <div class="blogContainer">
+                    <img src="images/päärynä.jpg">
+                    <p><%= blog.content ? blog.content : "no content" %></p>
+                    <div>
+                        <p><%= blog.date ? blog.date : "no date" %></p>
+                        <p>Topic: <%= blog.topic ? blog.topic : "no topic" %></p>
+                        <p>Tags: <%= blog.tags ? blog.tags : "no tags" %></p>
+                    </div>
+                <% });%>
+            </div>
+            </nav>
+        </header>
+    </div>
+</body>
+</html>
