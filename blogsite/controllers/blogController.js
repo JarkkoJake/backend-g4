@@ -34,7 +34,7 @@ exports.getMusicBlogs = async function (req, res, next) {
     }
 };
 
-exports.getNatureBlogs = async function (req, res) {
+exports.getNatureBlogs = async function (req, res, next) {
     try {
         var results = await blogDb.getBlogsByTopic("Nature");
 
@@ -42,12 +42,13 @@ exports.getNatureBlogs = async function (req, res) {
         for (let i = 0; i < results.length; i++) {
             results[i].tags = results[i].tags.split(",");
         }
-        res.status(200).send(results);
+        res.locals.blogs = results;
+        next();
     } catch (err) {
         res.status(400).send(err.message);
     }
 };
-exports.getTechnologyBlogs = async function (req, res) {
+exports.getTechnologyBlogs = async function (req, res, next) {
     try {
         var results = await blogDb.getBlogsByTopic("Technology");
 
@@ -55,12 +56,13 @@ exports.getTechnologyBlogs = async function (req, res) {
         for (let i = 0; i < results.length; i++) {
             results[i].tags = results[i].tags.split(",");
         }
-        res.status(200).send(results);
+        res.locals.blogs = results;
+        next();
     } catch (err) {
         res.status(400).send(err.message);
     }
 };
-exports.getTransportBlogs = async function (req, res) {
+exports.getTransportBlogs = async function (req, res, next) {
     try {
         var results = await blogDb.getBlogsByTopic("Transport");
 
@@ -68,12 +70,13 @@ exports.getTransportBlogs = async function (req, res) {
         for (let i = 0; i < results.length; i++) {
             results[i].tags = results[i].tags.split(",");
         }
-        res.status(200).send(results);
+        res.locals.blogs = results;
+        next();
     } catch (err) {
         res.status(400).send(err.message);
     }
 };
-exports.getOtherBlogs = async function (req, res) {
+exports.getOtherBlogs = async function (req, res, next) {
     try {
         var results = await blogDb.getBlogsByTopic("Other");
 
@@ -81,7 +84,8 @@ exports.getOtherBlogs = async function (req, res) {
         for (let i = 0; i < results.length; i++) {
             results[i].tags = results[i].tags.split(",");
         }
-        res.status(200).send(results);
+        res.locals.blogs = results;
+        next();
     } catch (err) {
         res.status(400).send(err.message);
     }
