@@ -15,9 +15,14 @@
             <h1 id="title">HOME</h1>
             <p>Welcome to reddit</p>
             <!--Example loop-->
-            <% blogs.forEach(blog => { %>
-                <p><%= blog.date ? blog.date : "no date" %></p>
-            <% });%>
+            <div class="blogContainer">
+                <% blogs.forEach(blog => { %>
+                    <button class="blog">
+                        <p><%= blog.title ? blog.title : "no title" %></p>
+                        <p><%= blog.date ? blog.date : "no date" %></p>
+                    </button>
+                <% });%>
+            </div>
             </nav>
         </header>
     </div>
