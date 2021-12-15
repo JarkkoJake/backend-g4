@@ -25,13 +25,13 @@
     <div id="newblog-content">
         <h1 id="header">Create a new blog</h1>
         <div>
-            <form action="#" method="POST">
+            <form action="/blog" method="POST" enctype="multipart/form-data">
                 <label for="inputBlogName">Title</label>
-                <input class="form-control" type="text" name="blogname" id="inputBlogName" required>
+                <input class="form-control" type="text" name="title" id="inputBlogName" required>
                 <label for="inputBlogContent">Content</label>
                 <input class="form-control" type="text" name="content" id="inputBlogContent">
                 <label for="inputBlogTags">Tags</label>
-                <input class="form-control" type="text" name="blogtags" id="inputBlogTags" required>
+                <input class="form-control" type="text" name="tags" id="inputBlogTags" required>
                 <label for="inputTopic">Topic</label>
                 <select class="form-spacing" name="topic" id="inputTopic">
                     <option value="music">Music</option>
@@ -40,6 +40,7 @@
                     <option value="transport">Transport</option>
                     <option value="other">Other</option>
                 </select>
+                <input class="form-control" type="file" name="thumbnail"/>
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Create</button>
             </form>
         </div>

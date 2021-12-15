@@ -111,6 +111,7 @@ exports.getBlogWithId = async function (req, res, next) {
 exports.newBlog = async function (req, res) {
     try {
         var newBlog = new Blog(req.body);
+        console.log(newBlog);
         var results = await blogDb.createBlog(newBlog);
         res.status(201).send(results);
     } catch (err) {

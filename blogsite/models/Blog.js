@@ -6,8 +6,8 @@
      constructor(data) {
          this.title = data.title
          this.content = data.content
-         this.thumbnail = data.thumbnail
-         this.user = data.user
+         this.thumbnail = data.thumbnail || " "
+         this.user = data.user || 1
          this.tags = data.tags
          this.topic = data.topic
          this.date = moment().format("Do of MMMM YYYY, h:mm:ss a");
