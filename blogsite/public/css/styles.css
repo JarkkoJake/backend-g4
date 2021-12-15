@@ -165,6 +165,20 @@ button[type=submit] {
   background-color: #FFAC5F;
   border-radius: 1vmin;
 }
+.login-block {
+  text-align: right;
+  margin-top: -8vh;
+  margin-right: 5vh;
+}
+.login-block-text {
+  color: #000000;
+  font-weight: bold;
+  flex: 1;
+  flex-direction: column;
+}
+.login-block-text:hover {
+color: #FFAC5F;
+}
 
 @media (max-width: 760px) {
   .login-status .bubble {
