@@ -197,13 +197,15 @@ color: #FFAC5F;
 .blog > img {
   width: 15vh;
   float: left;
-  border-radius: 1vmin;
 }
 .blog > div {
-  margin-left: 2%;
+  margin: 0% 0% 0% 2%;
   height: 80%;
 }
 .blog > div > h2 {
+  margin: 0%;
+}
+.blog > div > p {
   margin: 0%;
 }
 .blog:active {

@@ -11,9 +11,17 @@
 <body>
     <div>
         <header>
-            <h1 id="title">Profile</h1>
-            <p>Welcome <%= loggedIn ? currentUser.username : " "%></p>  <!-- Dunno -->
+            <h1 id="title">Profile of <%= loggedIn ? currentUser.username : " "%></h1>
             </nav>
+            <div class="blogContainer">
+                <div>
+                    <img src="<%= currentUser.profilePicture != ' ' ? currentUser.profilePicture : 'images/päärynä.jpg' %>">
+                    <p>Email: <%= currentUser.email ? currentUser.email : "no email" %></p>
+                </div>
+                <article>
+                    <%= currentUser.bio ? currentUser.bio : "no bio" %>
+                </article>
+            </div>
         </header>
     </div>
 </body>

@@ -3,7 +3,8 @@
         <img src="<%= blog.thumbnail != ' ' ? blog.thumbnail : 'images/päärynä.jpg'%>">
         <div>
             <h2><%= blog.title ? blog.title : "no title" %></h2>
-            <p><%= blog.date ? blog.date : "no date" %> by: <%= blog.user ? blog.user.username : "removed user"%></p>
+            <p><%= blog.date ? blog.date : "no date" %></p>
+            <p>By: <%= blog.user ? blog.user.username : "removed user"%></p>
             <p>Topic: <%= blog.topic ? blog.topic : "no topic" %></p>
             <p>Tags: <%= blog.tags ? blog.tags : "no tags" %></p>
         </div>

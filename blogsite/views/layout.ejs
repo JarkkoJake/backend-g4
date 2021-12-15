@@ -35,7 +35,11 @@
 				</a>
 			</div>
 			<div class="login-block">
-				<a href="/user/login" class="login-block-text">Login</a> <br>
+				<% if (loggedIn) {%>
+					<a href="<%=`/user/${currentUser.id}`%>" class="login-block-text">Logged in as <%= currentUser.username %></a><br>
+				<%} else {%>
+					<a href="/user/login" class="login-block-text">Login</a> <br>
+				<% } %>
 				<a href="/user/new" class="login-block-text">Register</a>
 			</div>
 		</div>
