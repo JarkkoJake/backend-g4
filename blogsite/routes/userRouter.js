@@ -8,6 +8,7 @@ Router.use(express.static("public"));
 Router.get("/", userController.getAllUsers);
 Router.get("/username/:username", userController.getUsersWithName);
 Router.get("/new", userController.newUserForm);
+Router.get("/login", userController.loginPage);
 Router.get("/:id", userController.getUserWithId, userController.profilePage);
 
 
