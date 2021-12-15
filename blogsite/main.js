@@ -13,6 +13,21 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(layouts);
 app.use(express.static("public"));
+app.use(cookieParser("secret"));
+app.use(expressSession({
+    secret: "secret",
+    cookie: {
+        maxAge: 4000000
+    },
+    resave: false,
+    saveUninitialized: false
+}));
+app.use(connectFlash());
+app.use((req, res, next) => {
+    res.locals.flashMessage = req.flash();
+    next();
+});
+
 app.use("/user", userRouter);
 app.use("/", homeRouter);
 app.use("/blog", blogRouter);
