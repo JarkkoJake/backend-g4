@@ -13,7 +13,7 @@ Router.get("/:id", userController.getUserWithId, userController.profilePage);
 
 Router.post("/", userController.newUser);
 Router.post("/login", passport.authenticate("local", {
-    successRedirect: "/user/4",
+    successRedirect: "/",
     failureRedirect: "/user/login",
     failureFlash: true
 }));
