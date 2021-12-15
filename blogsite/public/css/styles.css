@@ -139,6 +139,7 @@ button[type=submit] {
 }
 .layout-container {
   flex: 1 0 auto;
+  z-index: 10;
 }
 .layout-container-body {
   padding: 6% 20% 0% 20%;
