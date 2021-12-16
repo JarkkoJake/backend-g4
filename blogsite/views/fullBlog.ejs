@@ -10,29 +10,33 @@
 </head>
 <body>
     <div>
-        <header>
-            <% blogs.forEach(blog => { %>
-                <h1 id="title"><%= blog.title ? blog.title : "no title" %></h1>
-                <div class="blogContainer">
-                    <div>
-                        <img src="<%= blog.thumbnail != ' ' ? blog.thumbnail : 'images/päärynä.jpg' %>">
-                        <p><%= blog.date ? blog.date : "no date" %> By: <%= blog.user ? blog.user.username : "removed user"%></p>
-                        <p>Topic: <%= blog.topic ? blog.topic : "no topic" %></p>
-                        <p>Tags: <%= blog.tags ? blog.tags : "no tags" %></p>
-                    </div>
-                    <article>
-                        <%= blog.content ? blog.content : "no content" %>
-                    </article>
+        <% blogs.forEach(blog => { %>
+            <h1 id="title"><%= blog.title ? blog.title : "no title" %></h1>
+            <div class="blogContainer">
+                <div>
+                    <img src="<%= blog.thumbnail != ' ' ? blog.thumbnail : 'images/päärynä.jpg' %>">
+                    <p><%= blog.date ? blog.date : "no date" %></p>
+                    <p>By: <%= blog.user ? blog.user.username : "removed user"%></p>
+                    <p>Topic: <%= blog.topic ? blog.topic : "no topic" %></p>
+                    <p>Tags: <%= blog.tags ? blog.tags : "no tags" %></p>
+                </div>
+                <article>
+                    <%= blog.content ? blog.content : "no content" %>
+                </article>
+            </div>
+            <div class="commentContainer">
+                <h2>Comments</h2><br>
+                <div>
+                    <% if (blog.comments.length > 0) { %>
+                        <%- include("partials/comments")%>
+                    <% } %>
                 </div>
                 <% if (loggedIn) { %>
                     <%- include("partials/commentform"); %>
                 <% } %>
-                <% if (blog.comments.length > 0) { %>
-                    <%- include("partials/comments")%>
-                <% } %>
-            <% });%>
-            </nav>
-        </header>
+            </div>
+        <% });%>
+        </nav>
     </div>
 </body>
 </html>

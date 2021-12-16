@@ -10,6 +10,10 @@ body {
   display: flex;
   flex-direction: column;
 }
+body > div {
+  width: 100vw;
+  display: flex;
+}
 
 #nav {
   width: 100%;
@@ -142,7 +146,7 @@ button[type=submit] {
   z-index: 10;
 }
 .layout-container-body {
-  padding: 6% 20% 0% 20%;
+  padding: 6% 0% 0% 20%;
 }
 .push {
   height: 50px;
@@ -151,10 +155,12 @@ button[type=submit] {
 /* BLOG STYLES */
 .blogContainer {
   height: 60vh;
+  width: 60vw;
   padding-bottom: 2%;
   overflow-y: scroll;
   background-color: antiquewhite;
   border-radius: 1vmin;
+  float: left;
 }
 .blogContainer > div {
   width: 30vh;
@@ -165,6 +171,7 @@ button[type=submit] {
 .blogContainer > article {
   font-size: 2vmin;
   margin: 3%;
+  word-break: break-all;
 }
 .blog {
   width: 96%;
@@ -196,13 +203,15 @@ color: #FFAC5F;
 .blog > img {
   width: 15vh;
   float: left;
-  border-radius: 1vmin;
 }
 .blog > div {
-  margin-left: 2%;
+  margin: 0% 0% 0% 2%;
   height: 80%;
 }
 .blog > div > h2 {
+  margin: 0%;
+}
+.blog > div > p {
   margin: 0%;
 }
 .blog:active {
@@ -211,6 +220,29 @@ color: #FFAC5F;
 .blog:hover {
   color: #333;
   text-decoration: none;
+}
+.commentContainer {
+  width: 15vw;
+  height: 60vh;
+  margin-left: 1vw;
+  padding: 0% 0% 0% 1%;
+  border-radius: 1vmin;
+  background-color: antiquewhite;
+  float: left;
+}
+.commentContainer > div {
+  height: 75%;
+  overflow-y: scroll;
+}
+.comment {
+  font-size: 1.8vmin;
+  margin: 0;
+}
+.commentTag {
+  font-size: 1vmin;
+}
+#inputComment {
+  width: 80%;
 }
 
 @media (max-width: 760px) {

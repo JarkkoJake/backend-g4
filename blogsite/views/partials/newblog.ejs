@@ -1,6 +1,7 @@
 <style>
     #newblog {
         height: 100%;
+        padding: 0% 1%;
         width: 12.5%;
         position: absolute;
         background-color: #c5c5c5;
@@ -19,6 +20,10 @@
     .form-spacing {
         margin: 10px 0px 0px 5px;
     }
+    #inputBlogContent {
+        height: 30vh;
+        resize: none;
+    }
 </style>
 
 <div id="newblog">
@@ -29,7 +34,7 @@
                 <label for="inputBlogName">Title</label>
                 <input class="form-control" type="text" name="title" id="inputBlogName" required>
                 <label for="inputBlogContent">Content</label>
-                <input class="form-control" type="text" name="content" id="inputBlogContent">
+                <textarea class="form-control" type="text" name="content" id="inputBlogContent"></textarea>
                 <label for="inputBlogTags">Tags</label>
                 <input class="form-control" type="text" name="tags" id="inputBlogTags" required>
                 <label for="inputTopic">Topic</label>
