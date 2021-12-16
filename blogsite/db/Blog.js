@@ -17,13 +17,13 @@ exports.createBlog = function (blog) {
 
 /* Get all blogs from the database, TODO: orderby? */
 exports.getBlogs = function () {
-    return knex("Blogs").select(Blog.browsingInfo).limit(Blog.blogLimit);
+    return knex("Blogs").select(Blog.browsingInfo).limit(Blog.blogLimit).orderBy("id", "desc");
 };
 
 /* Get all topics with specific topic (string) 
 TODO: orderby? */
 exports.getBlogsByTopic = function (topic) {
-    return knex("Blogs").select(Blog.browsingInfo).where({"topic": topic}).limit(Blog.blogLimit);
+    return knex("Blogs").select(Blog.browsingInfo).where({"topic": topic}).limit(Blog.blogLimit).orderBy("id", "desc");
 };
 
 /*Get all data from a blog with id (int)*/

@@ -39,7 +39,7 @@ exports.newUser = async function (req, res, next) {
         newUser.password = await bcrypt.hash(newUser.password, 10);
         var results = await userDb.createUser(newUser);
         req.flash("success", "User created!");
-        res.locals.redirect = "/user/" + results[0];
+        res.locals.redirect = "/";
         next();
     } catch (err){
         req.flash("error", "Failed to create user");
